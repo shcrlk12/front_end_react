@@ -23,10 +23,11 @@ function App() {
  //     </div>
  //   );
  // }
-// axios.get(':3500/users/');
-axios.get('http://localhost:8888/users')
-.then((Response)=>{console.log(Response.data)})
-  // .catch((Error)=>{console.log(Error)})
+axios.get('http://localhost:8888/users').then((Response)=>{
+    console.log(Response.data);
+}).catch((Error)=>{
+    console.log(Error);
+})
   return (
     <div className="App">
       <div className="black-nav">
