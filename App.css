@@ -2,8 +2,33 @@
   text-align: center;
 }
 
+.default-link{
+  color : inherit;
+  text-decoration: none !important;
+}
+
 body{
   font-family: 'nanumsquare';
+}
+
+.blogTitle{
+  cursor: pointer;
+}
+
+.plusIcon{
+  width : 25px;
+  height : 25px;
+  cursor: pointer;
+  /* display:flex;
+  flex-direction: row-reverse; */
+  float: right;
+  margin-right: 20px;
+}
+
+.plusIcon2{
+  margin-top: 30px;
+  width : 100%;
+  height : 25px;
 }
 
 .black-nav{
@@ -16,12 +41,6 @@ body{
   font-size:20px;
 }
 
-.list{
-  margin-top: 30px;
-  text-align: left;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
