@@ -1,0 +1,26 @@
+.form1{
+  float :left;
+  margin : 20px;
+}
+
+.form2{
+  float :left;
+  width : 100px;
+}
+
+.form3{
+  margin : 20px;
+  margin-left : 0px;
+
+  float :left;
+  height:50px;
+}
+
+.form4{
+  margin : 20px;
+  border-style: solid;
+  overflow: auto;
+  width : 420px;
+  border-radius : 20px;
+
+}
