@@ -13,22 +13,23 @@ function Plus() {
   {
     const titleName = prompt("제목을 입력하세요");
 
-    dispatch(addObject());
-    dispatch(blogTitleChange(state.length, titleName));
+    if(titleName !== '')
+    {
+      dispatch(addObject());
+      dispatch(blogTitleChange(state.length, titleName));
 
-    axios({
-      method: "POST",
-      url : 'http://localhost:8888/create/blogData',
-      data :{
-        title : titleName
-      }
-    },).then((res)=>{
-      console.log(res);
-    }).catch((error)=>{
-      console.log(error);
-    });
-
-
+      axios({
+        method: "POST",
+        url : 'http://localhost:8888/create/blogData',
+        data :{
+          title : titleName
+        }
+      },).then((res)=>{
+        console.log(res);
+      }).catch((error)=>{
+        console.log(error);
+      });
+    }
   }
 
   return (

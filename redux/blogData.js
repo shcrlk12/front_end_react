@@ -4,6 +4,7 @@ const DATECHANGE = "DATECHANGE";
 const ADDLIKE = "ADDLIKE";
 const ADDOBJECT = "ADDOBJECT";
 const CHANGEID = "CHANGEID";
+const LIKECHANGE = "LIKECHANGE";
 
 const initState = [];
 
@@ -41,6 +42,12 @@ export const blogIdChange = (index1 = 0, temp1 = "test") => ({
   temp: temp1
 });
 
+export const blogLikeChange = (index1 = 0, temp1 = 0) => ({
+  type: LIKECHANGE,
+  index: index1,
+  temp: temp1
+});
+
 export const AddblogLike = (index1 = 0) => ({ type: ADDLIKE, index: index1 });
 
 export default function blogData(state = initState, action) {
@@ -71,6 +78,12 @@ export default function blogData(state = initState, action) {
 
     case CHANGEID:
       temp[action["index"]].id = action.temp;
+      return temp;
+
+    case LIKECHANGE:
+      temp[action["index"]].like = action.temp;
+      console.log('temp');
+      console.log(temp);
       return temp;
 
     default:

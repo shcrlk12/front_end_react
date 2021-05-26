@@ -1,41 +1,44 @@
 /* src/inc/test.js */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './blogContentTextArea.css';
 import {useSelector} from 'react-redux';
 import axios from 'axios'
 
 export default function BlogContentTextArea({match, location, name}) {
 
+  const [blogContent, setBlogContent] = useState('');
   const state = useSelector((state)=> state);
 
   function saveData(){
     alert("Save");
   }
 
-  let blogData;
-  let index;
-
-  for(var i in state)
-  {
-    if(state[i].id == match.params.name)
+  useEffect(()=>{
+    for(var i in state)
     {
-      index = i;
-      blogData = state[index].data;
-    }
-  }
+      if(state[i].id == match.params.name)
+      {
+        let index;
 
-  const funUpdateData = () =>
-  {
+        index = i;
+        setBlogContent(state[index].data);
+      }
+    }
+  },[]);
+
+  const funUpdateData = () =>{
     const isUpdate = window.confirm("저장 하시겠습니까?");
 
     if(isUpdate == true)
     {
+      
       axios({
         method: "POST",
-        url : 'http://localhost:8888/delete/blogData',
+        url : 'http://localhost:8888/update/blogData',
         data : {
           Id : match.params.name,
+          data : blogContent
         }
       },).then((res)=>{
         console.log(res);
@@ -45,10 +48,14 @@ export default function BlogContentTextArea({match, location, name}) {
     }
   }
 
+  const textChange = (e) =>{
+    setBlogContent(e.target.value);
+  };
+
   return (
       <div>
-        <textarea rows ="10" cols="40"defaultValue = {blogData}/>
-        <div onClick = {saveData}>save</div>
+        <textarea rows ="10" cols="40" defaultValue = {blogContent} onChange = {textChange}/>
+        <div onClick = {funUpdateData}>save</div>
       </div>
   );
 }

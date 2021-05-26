@@ -6,7 +6,7 @@ import Login from './inc/login.js';
 import BlogContents from './inc/blogContents.js';
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux";
-import {addObject, blogDataChange, blogTitleChange, blogIdChange} from './redux/blogData';
+import {addObject, blogDataChange, blogTitleChange, blogIdChange, blogDateChange, blogLikeChange} from './redux/blogData';
 import Header from './inc/header';
 import BlogData from './container/blogData';
 import Plus from './inc/plus';
@@ -31,10 +31,10 @@ function App() {
         dispatch(blogDataChange(i, Response.data[i]._data));
         dispatch(blogTitleChange(i, Response.data[i]._title));
         dispatch(blogIdChange(i, Response.data[i]._id));
+        dispatch(blogDateChange(i, Response.data[i]._modify_data));
+        dispatch(blogLikeChange(i, Response.data[i]._like));
+
       }
-
-        console.log(Response);
-
     })
     .catch((Error)=>{
         console.log(Error);
